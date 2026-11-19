@@ -11,6 +11,8 @@ Se juega en **https://kvothesson.com/generala-maldita/**. En la compu: `abrir.cm
 - El puntaje es **puntos × multiplicador**. Las estampitas se resuelven de izquierda a derecha: conviene sumar antes de multiplicar.
 - **Clic en dos estampitas tuyas** las cambia de lugar. **VER DADOS** muestra los seis lados de cada dado.
 - **M** apaga el sonido.
+- **F** o el ícono de las esquinas pone pantalla completa.
+- **En el celu** se juega de costado; si lo tenés derecho, el juego se gira solo. Para anotar, tocá la jugada una vez para ver cuánto da y otra para confirmar.
 
 ## Cómo está hecho
 
