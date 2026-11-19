@@ -619,7 +619,7 @@ function cartelito(t, z) {
 function pintar() {
   cuadro++;
   Z = [];
-  g.setTransform(1, 0, 0, 1, 0, 0);
+  g.setTransform(1, 0, 0, 1, OX, OY);
   if (G.tiembla > 0) { const d = [[1, 0], [-1, 1], [0, -1], [1, 1]][G.tiembla % 4]; g.translate(d[0], d[1]); G.tiembla--; }
   if (G.pantalla === 'titulo') pantallaTitulo();
   else if (G.pantalla === 'tienda') pantallaTienda();
@@ -643,25 +643,38 @@ function pintar() {
   for (const z of Z) if (dentro(z)) sobre = z;
   if (sobre && sobre.tip && !G.anim) cartelito(sobre.tip, sobre);
   cv.style.cursor = sobre && sobre.clic ? 'pointer' : 'default';
+  extender();
 }
 function bucle() { pintar(); requestAnimationFrame(bucle); }
 window.avanzar = (n) => { for (let k = 0; k < n; k++) pintar(); return window.estado(); };   // para probar sin esperar al reloj
 // Llena la ventana. Si el factor entero queda muy chico, usa el fraccionario para no dejar bordes grandes.
 // En un celu vertical el juego se gira 90° para jugar con el teléfono de costado.
 let GIRADO = false;
+// El juego vive en 320x180; el lienzo toma la forma de la pantalla y lo que sobra se cubre estirando
+// los bordes del cuadro (la veta de la madera sigue, el techo y la baranda bajan): sin franjas negras.
+let OX = 0, OY = 0, CW = W, CH = H, ESC = 1;
 function ajustar() {
   const aw = innerWidth, ah = innerHeight, tactil = matchMedia('(pointer: coarse)').matches;
   GIRADO = tactil && ah > aw;
   const ancho = GIRADO ? ah : aw, alto = GIRADO ? aw : ah;
   const justo = Math.min(ancho / W, alto / H), entero = Math.floor(justo);
-  const e = entero >= 1 && entero / justo >= 0.92 ? entero : Math.max(1, justo);
-  cv.style.width = Math.floor(W * e) + 'px'; cv.style.height = Math.floor(H * e) + 'px';
+  ESC = entero >= 1 && entero / justo >= 0.92 ? entero : Math.max(1, justo);
+  CW = Math.ceil(ancho / ESC); CH = Math.ceil(alto / ESC);
+  OX = Math.floor((CW - W) / 2); OY = Math.floor((CH - H) / 2);
+  if (cv.width !== CW || cv.height !== CH) { cv.width = CW; cv.height = CH; g.imageSmoothingEnabled = false; }
+  cv.style.width = CW * ESC + 'px'; cv.style.height = CH * ESC + 'px';
   cv.classList.toggle('girado', GIRADO);
+}
+function extender() {
+  g.setTransform(1, 0, 0, 1, 0, 0);
+  g.imageSmoothingEnabled = false;
+  if (OX > 0) { g.drawImage(cv, OX, OY, 1, H, 0, OY, OX, H); g.drawImage(cv, OX + W - 1, OY, 1, H, OX + W, OY, CW - OX - W, H); }
+  if (OY > 0) { g.drawImage(cv, 0, OY, CW, 1, 0, 0, CW, OY); g.drawImage(cv, 0, OY + H - 1, CW, 1, 0, OY + H, CW, CH - OY - H); }
 }
 function aLienzo(ev) {
   const r = cv.getBoundingClientRect();
-  if (GIRADO) { raton.x = Math.floor((ev.clientY - r.top) * W / r.height); raton.y = Math.floor((r.right - ev.clientX) * H / r.width); }
-  else { raton.x = Math.floor((ev.clientX - r.left) * W / r.width); raton.y = Math.floor((ev.clientY - r.top) * H / r.height); }
+  if (GIRADO) { raton.x = Math.floor((ev.clientY - r.top) * CW / r.height) - OX; raton.y = Math.floor((r.right - ev.clientX) * CH / r.width) - OY; }
+  else { raton.x = Math.floor((ev.clientX - r.left) * CW / r.width) - OX; raton.y = Math.floor((ev.clientY - r.top) * CH / r.height) - OY; }
   G.tactil = ev.pointerType !== 'mouse';
 }
 cv.addEventListener('pointermove', aLienzo);

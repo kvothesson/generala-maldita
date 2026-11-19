@@ -17,7 +17,7 @@ Se juega en **https://kvothesson.com/generala-maldita/**. En la compu: `abrir.cm
 ## Cómo está hecho
 
 - **`reglas.js`**: las reglas puras, sin pantalla. `node sim/probar_reglas.js` las prueba contra las cuentas del diseño.
-- **`index.html`**: la pantalla, dibujada en un lienzo de 320×180 agrandado en enteros. Sin dependencias.
+- **`index.html`**: la pantalla: el juego vive en 320×180 y el lienzo toma la forma de la pantalla, estirando los bordes del dibujo para que no queden franjas negras. Sin dependencias.
 - **`arte/`**: los fondos y las 30 estampitas salen de código (`python arte/hoja.py`), con paleta cerrada y luz en escalones tramados. `arte/maqueta.py` dibuja los tres cuadros con los que se eligió la estética.
 - **`DISENO.md`**: reglas, las 12 caras, las 30 estampitas y sus familias.
 - **`sim/`**: un simulador en Python que juega miles de partidas para encontrar ítems rotos de más y problemas de plata. Los informes están en `sim/RESULTADOS.md`.
