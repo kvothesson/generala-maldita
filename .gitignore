@@ -1,0 +1,5 @@
+node_modules/
+.cloudflare/
+*.local.md
+metricas/.secretos.json
+__pycache__/
