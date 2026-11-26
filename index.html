@@ -7,8 +7,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<title>Generala maldita</title>
-<meta name="description" content="Roguelike de dados en pixel art: jugás a la generala contra el Mandinga en una pulpería. Estampitas, caras malditas y combos que se rompen. Gratis, en el navegador.">
+<title>Generala maldita · roguelike de dados contra el Mandinga, gratis</title>
+<meta name="description" content="Roguelike de dados en pixel art: generala contra el Mandinga en una pulpería. Estampitas, caras malditas y combos que se rompen. Gratis, en el navegador.">
 <link rel="canonical" href="https://kvothesson.com/generala-maldita/">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -25,9 +25,55 @@
   body { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; }
   canvas { touch-action: none; display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); image-rendering: pixelated; image-rendering: crisp-edges; cursor: pointer; }
   canvas.girado { transform: translate(-50%, -50%) rotate(90deg); }
+.sinjs{position:fixed;inset:0;z-index:20;overflow:auto;background:#0d0a0c;color:#e8d8b8;font:18px/1.5 monospace;padding:24px 16px;box-sizing:border-box}.sinjs div{max-width:640px;margin:0 auto}.sinjs h1{color:#b88748;font-size:32px;margin:0 0 12px}.sinjs h2{color:#b88748;font-size:22px;margin:20px 0 6px}.sinjs a{color:#b88748}.sinjs .aviso{border-left:3px solid #b88748;padding-left:10px}
 </style>
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Kvothesson">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "VideoGame",
+ "name": "Generala maldita",
+ "description": "Roguelike de dados en pixel art: generala contra el Mandinga en una pulpería. Estampitas, caras malditas y combos que se rompen. Gratis, en el navegador.",
+ "url": "https://kvothesson.com/generala-maldita/",
+ "inLanguage": "es",
+ "genre": [
+  "Roguelike",
+  "Dados",
+  "Pixel art"
+ ],
+ "gamePlatform": "Web browser",
+ "applicationCategory": "Game",
+ "operatingSystem": "Any",
+ "isAccessibleForFree": true,
+ "offers": {
+  "@type": "Offer",
+  "price": "0",
+  "priceCurrency": "USD"
+ },
+ "author": {
+  "@type": "Organization",
+  "name": "Kvothesson",
+  "url": "https://kvothesson.com/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Kvothesson",
+  "url": "https://kvothesson.com/"
+ },
+ "image": "https://kvothesson.com/generala-maldita/og.png"
+}
+</script>
 </head>
 <body>
+<noscript><div class="sinjs"><div>
+<h1>Generala maldita</h1>
+<p>Generala maldita es un roguelike de dados en pixel art que se juega gratis en el navegador, en la compu o en el celu. Jugás a la generala contra el Mandinga en una pulpería de madrugada: son ocho mesas y cada una tiene una meta de puntos. Entre mesa y mesa comprás estampitas de santos y aparecidos, pegás caras nuevas en tus dados y, si te animás, firmás pactos con el diablo.</p>
+<h2>Cómo se juega</h2>
+<p>Tirás los dados con el botón TIRAR o la barra espaciadora y tenés 3 tiros por turno. Con un clic fijás un dado. Después anotás la jugada en una fila de la libreta, que te muestra cuánto daría. El puntaje es puntos por multiplicador y las estampitas se resuelven de izquierda a derecha, así que conviene sumar antes de multiplicar. Con M apagás el sonido y con F ponés pantalla completa. En el celu se juega de costado.</p>
+<p>Es un juego de <a href="https://kvothesson.com/">Kvothesson</a>, del Universo Austral. Gratis, sin cuenta y sin instalar nada.</p>
+<p class="aviso">Para jugar hace falta tener JavaScript activado.</p>
+</div></div></noscript>
 <canvas id="c" width="320" height="180"></canvas>
 <script src="reglas.js"></script>
 <script>
