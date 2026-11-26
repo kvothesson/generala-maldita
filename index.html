@@ -66,14 +66,15 @@
 </script>
 </head>
 <body>
-<noscript><div class="sinjs"><div>
+<div class="sinjs"><div>
 <h1>Generala maldita</h1>
 <p>Generala maldita es un roguelike de dados en pixel art que se juega gratis en el navegador, en la compu o en el celu. Jugás a la generala contra el Mandinga en una pulpería de madrugada: son ocho mesas y cada una tiene una meta de puntos. Entre mesa y mesa comprás estampitas de santos y aparecidos, pegás caras nuevas en tus dados y, si te animás, firmás pactos con el diablo.</p>
 <h2>Cómo se juega</h2>
 <p>Tirás los dados con el botón TIRAR o la barra espaciadora y tenés 3 tiros por turno. Con un clic fijás un dado. Después anotás la jugada en una fila de la libreta, que te muestra cuánto daría. El puntaje es puntos por multiplicador y las estampitas se resuelven de izquierda a derecha, así que conviene sumar antes de multiplicar. Con M apagás el sonido y con F ponés pantalla completa. En el celu se juega de costado.</p>
 <p>Es un juego de <a href="https://kvothesson.com/">Kvothesson</a>, del Universo Austral. Gratis, sin cuenta y sin instalar nada.</p>
 <p class="aviso">Para jugar hace falta tener JavaScript activado.</p>
-</div></div></noscript>
+</div></div>
+<script>document.querySelector(".sinjs").remove()</script>
 <canvas id="c" width="320" height="180"></canvas>
 <script src="reglas.js"></script>
 <script>
